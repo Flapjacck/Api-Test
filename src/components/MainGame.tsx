@@ -2,11 +2,20 @@ import { useState, useEffect } from "react";
 import TypeQ from "./TypeQ";
 import Score from "./Score";
 import PokedexQ from "./PokedexQ";
+import WhoDatQ from "./WhoDatQ";
 
 const MainGame: React.FC<{ onGameOver: () => void }> = ({ onGameOver }) => {
-  const [questionType, setQuestionType] = useState<"type" | "pokedex">(
-    Math.random() > 0.5 ? "type" : "pokedex"
-  );
+  const [questionType, setQuestionType] = useState<
+    "type" | "pokedex" | "whodat"
+  >(() => {
+    const types: ("type" | "pokedex" | "whodat")[] = [
+      "type",
+      "pokedex",
+      "whodat",
+    ];
+    return types[Math.floor(Math.random() * types.length)];
+  });
+
   const [score, setScore] = useState(0);
   const [highestScore, setHighestScore] = useState(0);
   const [message, setMessage] = useState("");
@@ -30,10 +39,14 @@ const MainGame: React.FC<{ onGameOver: () => void }> = ({ onGameOver }) => {
 
     // Delay the question type change to show the result message
     setTimeout(() => {
-      const nextQuestionType = Math.random() > 0.5 ? "type" : "pokedex";
-      setQuestionType(nextQuestionType);
+      const types: ("type" | "pokedex" | "whodat")[] = [
+        "type",
+        "pokedex",
+        "whodat",
+      ];
+      setQuestionType(types[Math.floor(Math.random() * types.length)]);
       setMessage("");
-    }, 1500); // 1.5 seconds delay
+    }, 1500);
   };
 
   const handleWrongAnswer = () => {
@@ -41,7 +54,7 @@ const MainGame: React.FC<{ onGameOver: () => void }> = ({ onGameOver }) => {
     setTimeout(() => {
       setScore(0);
       onGameOver();
-    }, 1500); // 1.5 seconds delay
+    }, 1500);
   };
 
   return (
@@ -53,8 +66,13 @@ const MainGame: React.FC<{ onGameOver: () => void }> = ({ onGameOver }) => {
           onScoreUpdate={handleScoreUpdate}
           onWrongAnswer={handleWrongAnswer}
         />
-      ) : (
+      ) : questionType === "pokedex" ? (
         <PokedexQ
+          onScoreUpdate={handleScoreUpdate}
+          onWrongAnswer={handleWrongAnswer}
+        />
+      ) : (
+        <WhoDatQ
           onScoreUpdate={handleScoreUpdate}
           onWrongAnswer={handleWrongAnswer}
         />
