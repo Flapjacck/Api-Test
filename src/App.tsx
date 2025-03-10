@@ -1,10 +1,17 @@
-import "./App.css";
-import RandomPokemon from "./components/RandomPokemon";
+import { useState } from "react";
+import TitleScreen from "./components/TitleScreen";
+import MainGame from "./components/MainGame";
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false);
+
   return (
     <>
-      <RandomPokemon />
+      {gameStarted ? (
+        <MainGame />
+      ) : (
+        <TitleScreen onStart={() => setGameStarted(true)} />
+      )}
     </>
   );
 }
