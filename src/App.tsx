@@ -5,10 +5,14 @@ import MainGame from "./components/MainGame";
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
 
+  const handleGameOver = () => {
+    setGameStarted(false);
+  };
+
   return (
     <>
       {gameStarted ? (
-        <MainGame />
+        <MainGame onGameOver={handleGameOver} />
       ) : (
         <TitleScreen onStart={() => setGameStarted(true)} />
       )}

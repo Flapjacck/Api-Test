@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { PokemonClient } from "pokenode-ts";
 
-const TypeQ: React.FC<{ onScoreUpdate: () => void }> = ({ onScoreUpdate }) => {
+const TypeQ: React.FC<{
+  onScoreUpdate: () => void;
+  onWrongAnswer: () => void;
+}> = ({ onScoreUpdate, onWrongAnswer }) => {
   const [pokemonImage, setPokemonImage] = useState<string>("");
   const [correctTypes, setCorrectTypes] = useState<string[]>([]);
   const [options, setOptions] = useState<string[]>([]);
@@ -97,6 +100,7 @@ const TypeQ: React.FC<{ onScoreUpdate: () => void }> = ({ onScoreUpdate }) => {
           .join(" and ")
           .toUpperCase()}.`
       );
+      onWrongAnswer(); // Reset score and go back to title screen
     }
 
     // Force re-render by updating `questionKey`
@@ -120,7 +124,7 @@ const TypeQ: React.FC<{ onScoreUpdate: () => void }> = ({ onScoreUpdate }) => {
               <button
                 key={type}
                 onClick={() => handleAnswer(type)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-400"
+                className="bg-slate-500 text-white px-4 py-2 rounded-full hover:bg-red-400"
               >
                 {type.toUpperCase()}
               </button>

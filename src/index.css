@@ -10,9 +10,9 @@ body {
   color: #f3f4f6;
   background: linear-gradient(90deg, #333235, #d6152fd0, #2b2828, #e71515);
   background-size: 400% 400%;
-  animation: gradient 17s ease infinite;
-  width: 99.79%;
-  height:99.6%;
+  animation: gradient 30s ease infinite;
+  width: 99.99%;
+  height:99.99%;
 }
 
 @keyframes gradient {
