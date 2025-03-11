@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import TypeQ from "./TypeQ";
+import TypeQ from "./questions/TypeQ";
 import Score from "./Score";
-import PokedexQ from "./PokedexQ";
-import WhoDatQ from "./WhoDatQ";
+import PokedexQ from "./questions/PokedexQ";
+import WhoDatQ from "./questions/WhoDatQ";
 
 const MainGame: React.FC<{ onGameOver: () => void }> = ({ onGameOver }) => {
   const [questionType, setQuestionType] = useState<
