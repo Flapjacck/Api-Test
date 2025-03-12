@@ -8,13 +8,13 @@ Using [PokeAPI](https://github.com/Gabb-c/pokenode-ts) in a React project with T
 Clone the project
 
 ```bash
-  git clone https://github.com/Flapjacck/Api-Test.git
+  git clone https://github.com/Flapjacck/WhoDatPokemon.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd Api-Test
+  cd WhoDatPokemon
 ```
 
 Install dependencies
