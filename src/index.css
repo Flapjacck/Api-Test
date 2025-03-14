@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
-
 html,
 body {
   margin: 0;
@@ -12,17 +11,58 @@ body {
   background-size: 400% 400%;
   animation: gradient 30s ease infinite;
   width: 99.99%;
-  height:99.99%;
+  height: 99.99%;
+}
+
+/* Responsive font sizes */
+h1 {
+  font-size: 2rem; /* Default font size */
+}
+
+h2 {
+  font-size: 1.5rem; /* Default font size */
+}
+
+p, button {
+  font-size: 1rem; /* Default font size */
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem; /* Smaller font size for tablets */
+  }
+
+  h2 {
+    font-size: 1.25rem; /* Smaller font size for tablets */
+  }
+
+  p, button {
+    font-size: 0.875rem; /* Smaller font size for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.25rem; /* Smaller font size for mobile phones */
+  }
+
+  h2 {
+    font-size: 1rem; /* Smaller font size for mobile phones */
+  }
+
+  p, button {
+    font-size: 0.75rem; /* Smaller font size for mobile phones */
+  }
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
